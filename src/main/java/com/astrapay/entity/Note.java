@@ -12,5 +12,6 @@ public class Note {
     @NotBlank(message = "Title cannot be blank")
     private String noteTitle;
 
+    @NotBlank(message = "Content cannot be blank")
     private String noteContent;
 }

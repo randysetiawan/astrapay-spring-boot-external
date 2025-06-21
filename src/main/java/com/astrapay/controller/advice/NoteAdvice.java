@@ -13,13 +13,13 @@ class NoteAdvice {
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity<Object> handleBadRequest(HttpMessageNotReadableException ex) {
+    public ResponseEntity<Object> handleInvalidJson() {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid JSON");
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Object> handleBadRequest(MethodArgumentNotValidException ex) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Note title must be filled");
+    public ResponseEntity<Object> handleBlankFields() {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Note title and content must be filled");
     }
 }
